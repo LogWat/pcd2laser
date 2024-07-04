@@ -10,7 +10,6 @@
   <node pkg="tf2_ros" type="static_transform_publisher" name="laser_transform" args="0.0 0.0 0.6 0.0 0.0 0.0 base_link livox_frame" />
   <node pkg="tf2_ros" type="static_transform_publisher" name="livox_transform" args="0.0 0.0 0.0 0.0 0.0 0.0 livox_frame livox_scan_frame" />
 
-  <!-- livoxCollector -->
   <node pkg="nodelet" type="nodelet" name="nodelet_manager" args="manager" output="screen" >
     <param name="num_worker_threads" value="8" />
   </node>
