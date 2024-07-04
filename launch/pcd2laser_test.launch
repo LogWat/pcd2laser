@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+  <param name="/use_sim_time" value="true" />
+
+  <!-- rosbag play -->
+  <arg name="bag_file" default="test.bag" />
+  <node name="rosbag" pkg="rosbag" type="play" args="--clock $(arg bag_file) " output="screen" />
+
+  <!-- You can adjust the pose of laser-rangefinder here. Order of values: x y z yaw pitch roll. -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="laser_transform" args="0.0 0.0 0.6 0.0 0.0 0.0 base_link livox_frame" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="livox_transform" args="0.0 0.0 0.0 0.0 0.0 0.0 livox_frame livox_scan_frame" />
+
+  <!-- livoxCollector -->
+  <node pkg="nodelet" type="nodelet" name="nodelet_manager" args="manager" output="screen" >
+    <param name="num_worker_threads" value="8" />
+  </node>
+  <node pkg="nodelet" type="nodelet" name="pcd2laser" args="load pcd2laser/pcd2laser nodelet_manager" output="screen" >
+    <param name="laser_topic" value="/livox/scan" />
+    <param name="pcd_topic" value="/livox/lidar_192_168_1_101" />
+    <param name="frame_id" value="livox_scan_frame" />
+    <param name="height_min" value="0.0" />
+    <param name="height_max" value="1.0" />
+  </node>
+  
+</launch>

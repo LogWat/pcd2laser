@@ -1,0 +1,6 @@
+<library path="lib/libpcd2laser">
+  <class name="pcd2laser/pcd2laser" type="pcd2laser::PCD2Laser" base_class_type="nodelet::Nodelet">
+    <description>
+    </description>
+  </class>
+</library>
