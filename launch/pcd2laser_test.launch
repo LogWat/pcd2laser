@@ -18,7 +18,7 @@
     <param name="laser_topic" value="/livox/scan" />
     <param name="pcd_topic" value="/livox/lidar_192_168_1_101" />
     <param name="frame_id" value="livox_scan_frame" />
-    <param name="height_min" value="0.0" />
+    <param name="height_min" value="0.1" />
     <param name="height_max" value="1.0" />
   </node>
   

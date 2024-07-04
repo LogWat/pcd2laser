@@ -31,8 +31,6 @@ private:
     void pcdCallback(const sensor_msgs::PointCloud2::ConstPtr &msg);
 
 public:
-    PCD2Laser();
-    ~PCD2Laser();
     virtual void onInit();
 };
 
